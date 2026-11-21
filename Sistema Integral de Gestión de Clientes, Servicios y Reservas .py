@@ -126,7 +126,11 @@ class ReservaError(Exception):
     Excepción base para errores relacionados con reservas.
     """
     pass
-
+class ParametroInvalidoError(Exception):
+    """
+    Se genera cuando un parámetro obligatorio es inválido o está vacío.
+    """
+    pass
 
 from abc import ABC, abstractmethod
 
@@ -297,8 +301,4 @@ if __name__ == "__main__":
 
 
 
-class ParametroInvalidoError(Exception):
-    """
-    Se genera cuando un parámetro obligatorio es inválido o está vacío.
-    """
-    pass
+
