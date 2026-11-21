@@ -14,7 +14,25 @@ def iniciar_ventana()
         font=("arial",16)
     )
 
-    titulo.pack()
+    titulo.pack(pady=20)
+
+    btn_cliente = tk.Button(
+        ventana,
+        text="gestion de clientes"
+    )
+    btn_cliente.pack(pady=10)
+
+    btn_servicios = tk.Button(
+        ventana,
+        text="gestion de servicio"
+    )
+    btn_servicios.pack(pady=10)
+
+    btn_reseras = tk.Button(
+        ventana,
+        text="gestion de resrvas"
+    )
+    btn_reservas.pack(pady=10)
 
     ventana.mainpool() 
 
