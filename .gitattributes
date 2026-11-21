@@ -1,16 +1,16 @@
 import tkinter as tk
-from cliemte import cliente 
+from cliente import cliente 
 from exceptions import*
 
-def iniciar_ventana()
+def iniciar_ventana():
 
     ventana = tk. Tk()
-    ventana.title("sistema integral de gestion de clientes, servicios y reservas (con interfas tkinter)
+    ventana.title("sistema integral de gestion de clientes, servicios y reservas (con interfas tkinter))
     ventana.geometry("800x600")
 
     titulo = tk.Label(
         ventana,
-        text="sistema integral de gestion de clientas y reservas ",
+        text="sistema integral de gestion de clientas,servicios y reservas "
         font=("arial",16)
     )
 
@@ -28,14 +28,14 @@ def iniciar_ventana()
     )
     btn_servicios.pack(pady=10)
 
-    btn_reseras = tk.Button(
+    btn_reservas = tk.Button(
         ventana,
-        text="gestion de resrvas"
+        text="gestion de reservas"
     )
     btn_reservas.pack(pady=10)
 
-    ventana.mainpool() 
+    ventana.mainloop() 
 
-if__name__== "__main__":
+if __name__ == "__main__":
     iniciar_ventana()
 
