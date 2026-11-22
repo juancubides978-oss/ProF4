@@ -1,3 +1,65 @@
+import re
+
+from exceptions import (
+    ClienteError,
+    TelefonoInvalidoError,
+    ParametroInvalidoError
+)
+
+from abc import ABC, abstractamenthod
+
+from exceptions import (
+    ServicioError,
+    ParametroInvalidoError
+)
+
+from exceptions import (
+    ReservaError,
+    ParametroInvalidoError
+)
+
+import logging
+
+from reserva import Reserva
+from logger import 
+registrar_evento
+
+from cliente import Cliente 
+
+from servicio import (
+    ReservaSala,
+    AlquilerEquipos,
+    AsesoriaEspecialisada
+)
+
+from sistema import SistemaGestion 
+
+from logger import 
+registar_error
+
+def main():
+
+    sistema = SistemaGestion()
+
+    try:
+        cliente1 = cliente(
+            1,
+            "juan"
+            "juan@mail.com"
+            "3001234567"
+        )
+
+        sistema.agregar_cliente(cliente1)
+        print("cliente agregado correctamente")
+
+    except Exception as e:
+
+        registrar_error(str(e))
+        print("error:",e)
+
+if __name__ == "__main__":
+    main()
+    
 
     
 
