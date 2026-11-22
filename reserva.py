@@ -89,15 +89,14 @@ class Reserva:
     # Calcular total
   
 
-    def calcular_total(self):
+    def calcular_total(self,descuento=0, impuesto=0):
 
         try:
-
-            costo = self.servicio.calcular_costo()
-
-            total = costo * self.duracion
-
-            return total
+            return self.servicio.calcular_costo(
+                cantidad=self.duracion,
+                descuento=descuento,
+                impuesto=inpuesto
+            )
 
         except Exception as e:
 
