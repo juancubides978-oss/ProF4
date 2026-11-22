@@ -56,7 +56,7 @@ class Reserva:
 
 
     # Cancelar reserva
-   -
+   
 
     def cancelar(self):
 
