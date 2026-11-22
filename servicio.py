@@ -8,9 +8,8 @@ class Servicio(ABC):
     def __init__(self,
                  id_servicio,
                  nombre,
-                 costo_hora,
-                capacidad
-                ):
+                 costo_base,):
+                     
         self.id_servicio = id_servicio
         self.nombre = nombre
         self.costo_base = costo_base
@@ -20,7 +19,7 @@ class Servicio(ABC):
         pass
 
     @abstractmethod
-    def describir_servicio(self):
+    def descripcion(self):
         pass
 
     @abstractmethod
@@ -28,6 +27,7 @@ class Servicio(ABC):
         pass
 
     # Método auxiliar para calcular descuentos e impuestos
+    
     def aplicar_descuentos_impuestos(self, subtotal, descuento=0, impuesto=0):
         if not 0 <= descuento <= 100:
             raise ValueError("El descuento debe estar entre 0 y 100.")
@@ -57,7 +57,7 @@ class ReservaSala(Servicio):
             nombre,
             costo_hora
         )
-        "Reserva de sala", costo_hora)
+        
         self.capacidad = capacidad
         self.costo_hora = costo_hora
         self.validar_parametros()
@@ -91,6 +91,7 @@ class ReservaSala(Servicio):
 
 
 # CLASE ALQUILER DE EQUIPOS
+
 class AlquilerEquipos(Servicio):
 
     def __init__(
@@ -111,8 +112,10 @@ class AlquilerEquipos(Servicio):
         self.validar_parametros()
 
     def validar_parametros(self):
-        if not isinstance(self.tipo_equipo, str) or not self.tipo_equipo.strip():
-            raise ValueError("Debe especificar un tipo de equipo.")
+        if self.cantidad <= 0:
+            
+            raise ValueError("la cantidad deve ser positiva."
+            )
 
         if self.costo_dia <= 0:
             raise ValueError("El costo por día debe ser positivo.")
@@ -133,19 +136,20 @@ class AlquilerEquipos(Servicio):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
-            f"cantidad: {self.cantidad}"
+            f"cantidad: {self.cantida\n"
             f"Costo por día: ${self.costo_dia}"
         )
 
 
 # CLASE ASESORÍA ESPECIALIZADA
+
 class AsesoriaEspecializada(Servicio):
 
     def __init__(
         self,
         id_servicio,
         nombre,
-        tarifa_hora
+        tarifa_hora,
         horas
     ):
         super().__init__(
@@ -158,8 +162,10 @@ class AsesoriaEspecializada(Servicio):
         self.validar_parametros()
 
     def validar_parametros(self):
-        if not isinstance(self.especialista, str) or not self.especialista.strip():
-            raise ValueError("Debe especificar el nombre del especialista.")
+        if self.horas <= 0: 
+            
+            raise ValueError("las horas deben ser positivas."
+            )
 
         if self.tarifa_hora <= 0:
             raise ValueError("La tarifa por hora debe ser positiva.")
@@ -180,7 +186,7 @@ class AsesoriaEspecializada(Servicio):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
-            f"horas: {self.horas}"
+            f"horas: {self.horas}\n"
             f"Tarifa por hora: ${self.tarifa_hora}"
         )
         
