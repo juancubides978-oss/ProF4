@@ -1,5 +1,5 @@
 
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod.
 
 
 # CLASE ABSTRACTA PRINCIPAL
@@ -136,7 +136,7 @@ class AlquilerEquipos(Servicio):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
-            f"cantidad: {self.cantida\n"
+            f"cantidad: {self.cantidad}\n"
             f"Costo por día: ${self.costo_dia}"
         )
 
