@@ -59,19 +59,21 @@ class Cliente:
         self.__nombre = nombre.strip()
 
     def set_correo(self, correo):
-        if not correo or correo.strip() == "":
+        if not correo or str(correo).strip() == "":
             raise CorreoInvalidoError(
                 "El correo es obligatorio."
             )
 
+        correo_limpio = str(correo).strip()
+
         patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
 
-        if not re.match(patron, correo):
+        if not re.match(patron, correo_limpio):
             raise CorreoInvalidoError(
                 "Formato de correo inválido."
             )
 
-        self.__correo = correo
+        self.__correo = correo_limpio
 
     def set_telefono(self, telefono):
         if not telefono or str(telefono).strip() == "":
@@ -88,8 +90,8 @@ class Cliente:
 
     def __str__(self):
         return (
-            f"Cliente(ID: {self.__id_cliente}, "
+            f"Cliente(ID:{self.__id_cliente}, "
             f"Nombre: {self.__nombre}, "
             f"Correo: {self.__correo}, "
-            f"Teléfono: {self.__telefono})"
+            f"Teléfono:{self.__telefono})"
         )
