@@ -129,6 +129,7 @@ class Reserva:
         return (
             f"Reserva("
             f"Cliente={self.cliente.get_nombre()}, "
-            f"Servicio={self.servicio._nombre}, "
+            f"Servicio={self.servicio.nombre}, "
             f"Estado={self.estado})"
         )
+        
