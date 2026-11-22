@@ -5,7 +5,12 @@ from abc import ABC, abstractmethod
 # CLASE ABSTRACTA PRINCIPAL
 class Servicio(ABC):
 
-    def __init__(self, id_servicio, nombre, costo_base):
+    def __init__(self,
+                 id_servicio,
+                 nombre,
+                 costo_hora,
+                capacidad
+                ):
         self.id_servicio = id_servicio
         self.nombre = nombre
         self.costo_base = costo_base
@@ -40,8 +45,19 @@ class Servicio(ABC):
 # CLASE RESERVA DE SALA
 class ReservaSala(Servicio):
 
-    def __init__(self, id_servicio, capacidad, costo_hora):
-        super().__init__(id_servicio, "Reserva de sala", costo_hora)
+    def __init__(
+        self,
+        id_servicio,
+        nombre,
+        costo_hora,
+        capacidad
+    ):
+        super().__init__(
+            id_servicio,
+            nombre,
+            costo_hora
+        )
+        "Reserva de sala", costo_hora)
         self.capacidad = capacidad
         self.costo_hora = costo_hora
         self.validar_parametros()
@@ -65,7 +81,7 @@ class ReservaSala(Servicio):
             subtotal, descuento, impuesto
         )
 
-    def describir_servicio(self):
+    def descripcion(self):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
@@ -75,11 +91,22 @@ class ReservaSala(Servicio):
 
 
 # CLASE ALQUILER DE EQUIPOS
-class AlquilerEquipo(Servicio):
+class AlquilerEquipos(Servicio):
 
-    def __init__(self, id_servicio, tipo_equipo, costo_dia):
-        super().__init__(id_servicio, "Alquiler de equipo", costo_dia)
-        self.tipo_equipo = tipo_equipo
+    def __init__(
+        self,
+        id_servicio,
+        nombre,
+        costo_dia,
+        cantidad
+    ):
+        
+        super().__init__(
+            id_servicio,
+            nombre,
+            costo_dia
+        )
+        self.cantidad = cantidad
         self.costo_dia = costo_dia
         self.validar_parametros()
 
@@ -102,11 +129,11 @@ class AlquilerEquipo(Servicio):
             subtotal, descuento, impuesto
         )
 
-    def describir_servicio(self):
+    def descripcion(self):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
-            f"Tipo de equipo: {self.tipo_equipo}\n"
+            f"cantidad: {self.cantidad}"
             f"Costo por día: ${self.costo_dia}"
         )
 
@@ -114,9 +141,19 @@ class AlquilerEquipo(Servicio):
 # CLASE ASESORÍA ESPECIALIZADA
 class AsesoriaEspecializada(Servicio):
 
-    def __init__(self, id_servicio, especialista, tarifa_hora):
-        super().__init__(id_servicio, "Asesoría especializada", tarifa_hora)
-        self.especialista = especialista
+    def __init__(
+        self,
+        id_servicio,
+        nombre,
+        tarifa_hora
+        horas
+    ):
+        super().__init__(
+            id_servicio,
+            nombre,
+            tarifa_hora
+        )
+        self.horas = horas
         self.tarifa_hora = tarifa_hora
         self.validar_parametros()
 
@@ -139,28 +176,11 @@ class AsesoriaEspecializada(Servicio):
             subtotal, descuento, impuesto
         )
 
-    def describir_servicio(self):
+    def descripcion(self):
         return (
             f"Servicio: {self.nombre}\n"
             f"ID: {self.id_servicio}\n"
-            f"Especialista: {self.especialista}\n"
+            f"horas: {self.horas}"
             f"Tarifa por hora: ${self.tarifa_hora}"
         )
-
-
-# PRUEBAS DEL SISTEMA
-if __name__ == "__main__":
-
-    sala = ReservaSala(1, 30, 50000)
-    equipo = AlquilerEquipo(2, "Video Beam", 80000)
-    asesoria = AsesoriaEspecializada(3, "Ingeniero de sistemas", 60000)
-
-    servicios = [sala, equipo, asesoria]
-    cantidades = [3, 2, 4]
-
-    for servicio, cantidad in zip(servicios, cantidades):
-        print("\n---------------------------")
-        print(servicio.describir_servicio())
-        print("Costo normal: $", servicio.calcular_costo(cantidad))
-        print("Costo con descuento e impuesto: $",
-              servicio.calcular_costo(cantidad, 10, 19))
+        
