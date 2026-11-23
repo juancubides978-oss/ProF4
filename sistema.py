@@ -1,4 +1,3 @@
-@@ -1,64 +0,0 @@
 from reserva import Reserva
 from logger import registrar_evento
 
