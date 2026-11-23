@@ -92,16 +92,16 @@ class Reserva:
     def calcular_total(self,descuento=0, impuesto=0):
 
         try:
+            cantidad_num =float(self.duracion)
             return self.servicio.calcular_costo(
-                cantidad=self.duracion,
-                descuento=descuento,
-                impuesto=inpuesto
+                cantidad=cantidad_num,
+                 descuento=float(descuento),
+                impuesto=float(impuesto)
             )
 
         except Exception as e:
 
-            raise ReservaError(
-                "Error al calcular el valor total de la reserva."
+            raise ReservaError(f"Error al calcular el valor total de la reserva: {e}"
             ) from e
 
         finally:
