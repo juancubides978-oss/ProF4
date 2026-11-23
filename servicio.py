@@ -1,6 +1,4 @@
-
-from abc import ABC, abstractmethod.
-
+from abc import ABC, abstractmethod
 
 # CLASE ABSTRACTA PRINCIPAL
 class Servicio(ABC):
@@ -122,14 +120,17 @@ class AlquilerEquipos(Servicio):
 
     def calcular_costo(self, cantidad=1, descuento=0, impuesto=0):
         self.validar_parametros()
+        cantidad_num = float(cantidad)
 
         if cantidad <= 0:
-            raise ValueError("Los días deben ser mayores que cero.")
+            raise ValueError("La cantidad debe ser mayor que cero.")
 
-        subtotal = cantidad * self.costo_dia
+        subtotal = cantidad_num * float(self.costo_dia)
 
         return self.aplicar_descuentos_impuestos(
-            subtotal, descuento, impuesto
+            subtotal,
+            float(descuento),
+            float(impuesto)
         )
 
     def descripcion(self):
@@ -189,4 +190,5 @@ class AsesoriaEspecializada(Servicio):
             f"horas: {self.horas}\n"
             f"Tarifa por hora: ${self.tarifa_hora}"
         )
+
         
